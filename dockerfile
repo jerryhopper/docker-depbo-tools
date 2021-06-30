@@ -26,7 +26,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
 FROM ubuntu:bionic
 COPY --from=build /usr/local/pbotools /usr/local/pbotools
 
-###### Start FusionAuth App #######################################################################
+###### Start #######################################################################
 LABEL description="..."
 LABEL maintainer="<hopper.jerry@gmail.com>"
 ENV PATH=$PATH:/usr/local/pbotools/bin
