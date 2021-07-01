@@ -24,10 +24,14 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && cd /tmp \
     && git clone https://github.com/jerryhopper/docker-depbo-tools.git \
     && ls -latr /tmp/docker-depbo-tools/external \
-    && cd /tmp/docker-depbo-tools/external \
-    && unzip ./external.zip
+    && cd /tmp/docker-depbo-tools/external 
     
-#RUN tar zxv /tmp/docker-depbo-tools/external/depbo-tools-0.8.10-linux-arm64-debian.tar.gz
+RUN cd /tmp/docker-depbo-tools/external && ls -latr 
+#RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
+RUN cd /tmp/docker-depbo-tools/external && tar -zxv ./depbo-tools-0.8.10-linux-arm64-debian.tar.gz
+RUN cd /tmp/docker-depbo-tools/external && ls -latr 
+
+
 #    && wget -O /tmp/pbotools.tar.gz ${BINARY_URL} \
 #    && ls -latr /tmp 
 #    && tar -zxv pbotools.tar.gz \
