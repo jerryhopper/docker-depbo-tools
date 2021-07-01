@@ -22,8 +22,9 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && apt install -y curl \
     && ls -latr /tmp \
     && cd /tmp \
-    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
-#    && ls -latr /tmp 
+    && wget -O /tmp/pbotools.tar.gz ${BINARY_URL} 
+    && ls -latr /tmp 
+#    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
 #    && tar zxv pbotools.tar.gz \
 #    && apt install -y curl unzip liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
 #    && mkdir -p /usr/local/pbotools \
