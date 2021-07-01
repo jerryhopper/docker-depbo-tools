@@ -18,14 +18,15 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         exit 1;\
         ;;\
     esac \
-    && apt update \
+    && apt update 
     && apt install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
     && apt install -y curl unzip \
-    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
-    && mkdir -p /usr/local/pbotools && tar -zxv /tmp/pbotools.tar.gz -C /usr/local/pbotools
+#    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
+#    && mkdir -p /usr/local/pbotools && tar -zxv /tmp/pbotools.tar.gz -C /usr/local/pbotools
 
-#RUN echo $BINARY_URL
-RUN ls -latr /usr/local/pbotools 
+
+RUN echo $BINARY_URL
+#RUN ls -latr /usr/local/pbotools 
 #RUN tar -zxv $BINARY_URL -C /usr/local/pbotools
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
