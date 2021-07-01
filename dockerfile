@@ -8,10 +8,10 @@ ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in\
     aarch64|arm64)\
-        BINARY_URL='./external/mikero-tools-linux-arm64.tar.gz';\
+        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/mikero-tools-linux-arm64.tar.gz';\
         ;;\
     amd64|x86_64)\
-        BINARY_URL='./external/depbo-tools-0.8.10-linux-64bit.tgz';\
+        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/depbo-tools-0.8.10-linux-64bit.tgz';\
         ;;\
     *)\
         echo "Unsupported arch: ${ARCH}";\
@@ -19,11 +19,13 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && apt install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 
-#\    && mkdir -p /usr/local/pbotools && tar -zxv $BINARY_URL -C /usr/local/pbotools
+    && apt install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
+    && apt install -y curl unzip \
+    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
+    && mkdir -p /usr/local/pbotools && tar -zxv /tmp/pbotools.tar.gz -C /usr/local/pbotools
 
-RUN echo $BINARY_URL
-#RUN ls -latr 
+#RUN echo $BINARY_URL
+RUN ls -latr /usr/local/pbotools 
 #RUN tar -zxv $BINARY_URL -C /usr/local/pbotools
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
