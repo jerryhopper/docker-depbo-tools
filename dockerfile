@@ -23,7 +23,6 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && ls -latr /tmp \
     && cd /tmp \
     && wget -O /tmp/pbotools.tar.gz ${BINARY_URL} \
-    && tar zxv /tmp/pbotools.tar.gz \
     && ls -latr /tmp 
 #     && tar zxv pbotools.tar.gz \
 #    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
