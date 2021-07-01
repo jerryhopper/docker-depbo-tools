@@ -20,7 +20,8 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     esac \
     && apt update \
     && apt install -y curl unzip \
-    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} 
+    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
+    && ls -latr /tmp
 #&& apt install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 curl unzip
 #\
 #    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
