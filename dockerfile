@@ -19,7 +19,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && apt install -y curl wget \
+    && apt install -y curl wget git \
     && ls -latr /tmp \
     && cd /tmp \
     && git clone https://github.com/jerryhopper/docker-depbo-tools.git \
@@ -37,7 +37,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
 #    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
 #    && mkdir -p /usr/local/pbotools && tar -zxv /tmp/pbotools.tar.gz -C /usr/local/pbotools
 
-RUN cd /tmp && tar -zxv pbotools.tar.gz && ls -latr
+#RUN cd /tmp && tar -zxv pbotools.tar.gz && ls -latr
 #RUN echo $BINARY_URL
 #RUN ls -latr /usr/local/pbotools 
 #RUN tar -zxv $BINARY_URL -C /usr/local/pbotools
