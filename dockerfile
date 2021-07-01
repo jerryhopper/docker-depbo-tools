@@ -21,6 +21,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && apt update \
     && apt install -y curl unzip \
     && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
+    && ls -latr /tmp \
     && tar -zxv /tmp/pbotools.tar.gz \
     && ls -latr /tmp 
 #    && tar -zxv /tmp/pbotools.tar.gz
