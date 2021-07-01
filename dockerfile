@@ -24,7 +24,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && ls -latr /tmp \
     && cd /tmp \
     && mkdir -p /usr/local/pbotools \
-    && tar zxv /tmp/pbotools.tar.gz -C /usr/local/pbotools 
+    && tar zxv pbotools.tar.gz
     && ls -latr /tmp \
     && ls -latr /usr/local/pbotools 
 #    && tar -zxv /tmp/pbotools.tar.gz
