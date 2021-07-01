@@ -2,7 +2,7 @@
 #
 
 FROM ubuntu:bionic as build
-
+RUN ls -latr
 ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in\
