@@ -1,7 +1,7 @@
 #
 #
 
-FROM ubuntu:bionic as build
+FROM ubuntu:bionic
 RUN ls -latr
 ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
@@ -24,8 +24,8 @@ RUN ls -latr
 #RUN tar -zxv $BINARY_URL -C /usr/local/pbotools
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
-FROM ubuntu:bionic
-COPY --from=build /usr/local/pbotools /usr/local/pbotools
+#FROM ubuntu:bionic
+#COPY --from=build /usr/local/pbotools /usr/local/pbotools
 
 ###### Start #######################################################################
 LABEL description="..."
