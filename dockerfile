@@ -28,7 +28,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     
 RUN cd /tmp/docker-depbo-tools/external && ls -latr 
 #RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
-RUN cd /tmp/docker-depbo-tools/external && tar -xv ./depbo-tools-0.8.10-linux-arm64-debian.tar
+RUN cd /tmp/docker-depbo-tools/external && tar -xv depbo-tools-0.8.10-linux-arm64-debian.tar
 RUN cd /tmp/docker-depbo-tools/external && ls -latr 
 
 
