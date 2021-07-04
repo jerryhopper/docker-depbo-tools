@@ -8,10 +8,10 @@ ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in\
     aarch64|arm64)\
-        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/mikero-tools-linux-arm64.tar.gz';\
+        BINARY_URL='http://ftp.armedassault.info/_hosted/depbo-tools-0.8.10-linux-arm64-debian.tar';\
         ;;\
     amd64|x86_64)\
-        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/depbo-tools-0.8.10-linux-64bit.tgz';\
+        BINARY_URL='http://ftp.armedassault.info/_hosted/depbo-tools-0.8.10-linux-amd64.tar';\
         ;;\
     *)\
         echo "Unsupported arch: ${ARCH}";\
@@ -22,14 +22,13 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && apt install -y curl wget unzip git \
     && ls -latr /tmp \
     && cd /tmp \
-    && git clone https://github.com/jerryhopper/docker-depbo-tools.git \
-    && ls -latr /tmp/docker-depbo-tools/external \
-    && cd /tmp/docker-depbo-tools/external 
+    && wget -O /tmp/pbotools.tar ${BINARY_URL} \
+    && ls -latr /tmp     
     
-RUN cd /tmp/docker-depbo-tools/external && ls -latr 
+#RUN cd /tmp/docker-depbo-tools/external && ls -latr 
 #RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
-RUN cd /tmp/docker-depbo-tools/external && tar -xv depbo-tools-0.8.10-linux-arm64-debian.tar
-RUN cd /tmp/docker-depbo-tools/external && ls -latr 
+RUN tar -xv /tmp/depbo-tools.tar
+RUN cd /tmp/external && ls -latr 
 
 
 #    && wget -O /tmp/pbotools.tar.gz ${BINARY_URL} \
