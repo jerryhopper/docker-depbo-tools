@@ -1,8 +1,8 @@
 #
 #
 
-FROM ubuntu:focal as build
-#RUN ls -latr /home
+FROM ubuntu:focal 
+
 
 ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
@@ -23,45 +23,14 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && apt install -y curl \
     && curl -LfsSo /tmp/depbo-tools.tgz ${BINARY_URL} \
     && cd /tmp \
-    && ls -latr 
-
-#RUN mkdir -p /usr/local/depbo-tools 
-
-RUN cd /tmp \
     && tar -zxvf depbo-tools.tgz  \
-    && ls -latr 
-
-RUN cp -r /tmp/depbo-tools /usr/local/depbo-tools 
-RUN ls -latr /usr/local/depbo-tools 
+    && cp -r /tmp/depbo-tools /usr/local/depbo-tools \
+    && ls -latr /usr/local/depbo-tools 
     
-#RUN ls -latr  /usr/local/depbo-tools 
-
-#RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
-#RUN tar -xv /tmp/depbo-tools.tar
-#RUN cd /tmp/external && ls -latr 
-
-
-#    && wget -O /tmp/pbotools.tar.gz ${BINARY_URL} \
-#    && ls -latr /tmp 
-#    && tar -zxv pbotools.tar.gz \
-#    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
-#    && apt install -y curl unzip liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
-#    && mkdir -p /usr/local/pbotools \
-#&& ls -latr /usr/local/pbotools 
-#    && tar zxv /tmp/pbotools.tar.gz
-#&& apt install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 curl unzip
-#\
-#    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
-#    && mkdir -p /usr/local/pbotools && tar -zxv /tmp/pbotools.tar.gz -C /usr/local/pbotools
-
-#RUN cd /tmp && tar -zxv pbotools.tar.gz && ls -latr
-#RUN echo $BINARY_URL
-#RUN ls -latr /usr/local/pbotools 
-#RUN tar -zxv $BINARY_URL -C /usr/local/pbotools
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
-FROM ubuntu:focal
-COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
+#FROM ubuntu:focal
+#COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 
 ###### Start #######################################################################
 LABEL description="..."
