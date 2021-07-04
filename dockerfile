@@ -19,16 +19,15 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && apt install -y curl wget unzip git \
-    && ls -latr /tmp \
-    && cd /tmp \
-    && wget -O /tmp/pbotools.tar ${BINARY_URL} \
-    && ls -latr /tmp     
+    && ls -latr  \
+    && cd external \
+    && tar -zxvf depbo-tools-0.8.10-linux.tgz
+    && ls -latr
     
 #RUN cd /tmp/docker-depbo-tools/external && ls -latr 
 #RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
-RUN tar -xv /tmp/depbo-tools.tar
-RUN cd /tmp/external && ls -latr 
+#RUN tar -xv /tmp/depbo-tools.tar
+#RUN cd /tmp/external && ls -latr 
 
 
 #    && wget -O /tmp/pbotools.tar.gz ${BINARY_URL} \
