@@ -29,8 +29,8 @@ RUN cd /tmp \
     && tar -zxvf depbo-tools-0.8.10-linux.tgz \
     && ls -latr 
 
-RUN cd /tmp \
-    && cp -r "/tmp/${BINARY_FOLDER}/." /usr/local/pbotools
+RUN cd "/tmp/${BINARY_FOLDER}" \
+    && cp -r ./ /usr/local/pbotools
     
 RUN ls -latr  /usr/local/pbotools
 
