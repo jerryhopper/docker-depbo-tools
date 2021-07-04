@@ -23,12 +23,14 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && apt install -y curl \
     && curl -LfsSo /tmp/depbo-tools-0.8.10-linux.tgz ${BINARY_URL} \
     && cd /tmp \
+    && ls -latr \
+    && tar -zxvf depbo-tools-0.8.10-linux.tgz \
     && ls -latr 
 
-RUN cd /tmp \
-    && tar -zxvf depbo-tools-0.8.10-linux.tgz \
-    && ls -latr \ 
-    && cp -r "${BINARY_FOLDER}/." /usr/local/pbotools
+RUN echo "${BINARY_FOLDER}"
+
+RUN cd "/tmp/${BINARY_FOLDER}" \
+    && cp -r . /usr/local/pbotools
     
 RUN ls -latr  /usr/local/pbotools
 
