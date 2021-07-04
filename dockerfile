@@ -27,9 +27,11 @@ RUN ARCH="$(dpkg --print-architecture)"; \
 
 RUN cd /tmp \
     && tar -zxvf depbo-tools-0.8.10-linux.tgz \
-    && ls -latr
+    && ls -latr \ 
+    && cp -r $BINARY_FOLDER /usr/local/pbotools
     
-#RUN cd /tmp/docker-depbo-tools/external && ls -latr 
+RUN ls -latr  /usr/local/pbotools
+
 #RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
 #RUN tar -xv /tmp/depbo-tools.tar
 #RUN cd /tmp/external && ls -latr 
