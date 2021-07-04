@@ -25,15 +25,16 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && cd /tmp \
     && ls -latr 
 
-RUN mkdir -p /usr/local/pbotools 
+#RUN mkdir -p /usr/local/depbo-tools 
+
 RUN cd /tmp \
     && tar -zxvf depbo-tools.tgz  \
     && ls -latr 
-    
 
-#RUN ls -latr /usr/local/pbotools
+RUN cp -r /tmp/depbo-tools /usr/local/depbo-tools 
+RUN ls -latr /usr/local/depbo-tools 
     
-RUN ls -latr  /usr/local/pbotools
+#RUN ls -latr  /usr/local/depbo-tools 
 
 #RUN unzip /tmp/docker-depbo-tools/external/external.zip -d /tmp/docker-depbo-tools/external/external
 #RUN tar -xv /tmp/depbo-tools.tar
