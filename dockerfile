@@ -19,9 +19,11 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && ls -latr  \
-    && cd external \
-    && tar -zxvf depbo-tools-0.8.10-linux.tgz
+    && ls -latr \
+    && ls -latr external 
+
+RUN cd external \
+    && tar -zxvf depbo-tools-0.8.10-linux.tgz \
     && ls -latr
     
 #RUN cd /tmp/docker-depbo-tools/external && ls -latr 
