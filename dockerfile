@@ -6,12 +6,13 @@ RUN ls -latr /home
 
 ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
+    BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/depbo-tools-0.8.10-linux.tgz';\
     case "${ARCH}" in\
     aarch64|arm64)\
-        BINARY_URL='http://ftp.armedassault.info/_hosted/depbo-tools-0.8.10-linux-arm64-debian.tar';\
+        BINARY_FOLDER='linux-arm64-focal';\
         ;;\
     amd64|x86_64)\
-        BINARY_URL='http://ftp.armedassault.info/_hosted/depbo-tools-0.8.10-linux-amd64.tar';\
+        BINARY_FOLDER='linux-amd64';\
         ;;\
     *)\
         echo "Unsupported arch: ${ARCH}";\
@@ -19,10 +20,11 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && ls -latr \
-    && ls -latr external 
+    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
+    && cd /tmp \
+    && ls -latr 
 
-RUN cd external \
+RUN cd cd /tmp \
     && tar -zxvf depbo-tools-0.8.10-linux.tgz \
     && ls -latr
     
