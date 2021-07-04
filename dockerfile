@@ -41,4 +41,6 @@ ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/bogus.pbo \ 
      && extractpbo /tmp/bogus.pbo
 
+WORKDIR /home
+
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
