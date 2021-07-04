@@ -23,7 +23,10 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && apt install -y curl \
     && curl -LfsSo /tmp/depbo-tools.tgz ${BINARY_URL} \
     && cd /tmp \
-    && ls -latr \
+    && ls -latr 
+
+RUN mkdir -p /usr/local/pbotools 
+RUN cd /tmp \
     && tar -zxvf depbo-tools.tgz /usr/local/pbotools \
     && ls -latr 
 
