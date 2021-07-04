@@ -20,6 +20,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
+    && apt install -y curl \
     && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
     && cd /tmp \
     && ls -latr 
