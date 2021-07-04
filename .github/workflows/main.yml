@@ -26,7 +26,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: test?
-        run: tar -xv ./external/depbo-tools-0.8.10-linux-arm64-focal.tar
+        run: tar -zxvf ./external/depbo-tools-0.8.10-linux.tgz
       -
         name: Build and push
         uses: docker/build-push-action@v2
