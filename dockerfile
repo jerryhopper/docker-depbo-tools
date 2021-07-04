@@ -20,7 +20,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && apt install -y curl \
+    && apt install -y curl liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
     && curl -LfsSo /tmp/depbo-tools.tgz ${BINARY_URL} \
     && cd /tmp \
     && tar -zxvf depbo-tools.tgz  \
