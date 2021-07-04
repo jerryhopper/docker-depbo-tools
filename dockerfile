@@ -21,7 +21,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     esac \
     && apt update \
     && apt install -y curl \
-    && curl -LfsSo /tmp/pbotools.tar.gz ${BINARY_URL} \
+    && curl -LfsSo /tmp/depbo-tools-0.8.10-linux.tgz ${BINARY_URL} \
     && cd /tmp \
     && ls -latr 
 
