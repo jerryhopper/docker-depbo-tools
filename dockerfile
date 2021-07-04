@@ -25,7 +25,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && cd /tmp \
     && ls -latr 
 
-RUN cd cd /tmp \
+RUN cd /tmp \
     && tar -zxvf depbo-tools-0.8.10-linux.tgz \
     && ls -latr
     
