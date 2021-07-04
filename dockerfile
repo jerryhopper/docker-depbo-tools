@@ -6,13 +6,13 @@ RUN ls -latr /home
 
 ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
-    BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/depbo-tools-0.8.10-linux.tgz';\
+    
     case "${ARCH}" in\
     aarch64|arm64)\
-        BINARY_FOLDER='linux-arm64-focal';\
+        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/linux-arm64-focal.tgz';\
         ;;\
     amd64|x86_64)\
-        BINARY_FOLDER='linux-amd64';\
+        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/linux-amd64.tgz';\
         ;;\
     *)\
         echo "Unsupported arch: ${ARCH}";\
@@ -21,16 +21,14 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     esac \
     && apt update \
     && apt install -y curl \
-    && curl -LfsSo /tmp/depbo-tools-0.8.10-linux.tgz ${BINARY_URL} \
+    && curl -LfsSo /tmp/depbo-tools.tgz ${BINARY_URL} \
     && cd /tmp \
     && ls -latr \
-    && tar -zxvf depbo-tools-0.8.10-linux.tgz \
+    && tar -zxvf depbo-tools.tgz /usr/local/pbotools \
     && ls -latr 
 
-RUN echo "${BINARY_FOLDER}"
 
-RUN cd "/tmp/${BINARY_FOLDER}" \
-    && cp -r . /usr/local/pbotools
+#RUN ls -latr /usr/local/pbotools
     
 RUN ls -latr  /usr/local/pbotools
 
