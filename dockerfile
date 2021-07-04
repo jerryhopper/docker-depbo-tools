@@ -28,7 +28,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
 RUN cd /tmp \
     && tar -zxvf depbo-tools-0.8.10-linux.tgz \
     && ls -latr \ 
-    && cp -r "${BINARY_FOLDER}/." /usr/local/pbotools
+    && cp -r "${BINARY_FOLDER}" /usr/local/pbotools
     
 RUN ls -latr  /usr/local/pbotools
 
