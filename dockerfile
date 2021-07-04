@@ -38,5 +38,6 @@ LABEL maintainer="<hopper.jerry@gmail.com>"
 ENV PATH=$PATH:/usr/local/depbo-tools/bin
 ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
+RUN extractpbo --help
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
