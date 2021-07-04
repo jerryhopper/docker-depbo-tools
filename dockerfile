@@ -1,8 +1,8 @@
 #
 #
 
-FROM ubuntu:bionic
-RUN ls -latr /home
+FROM ubuntu:focal as build
+#RUN ls -latr /home
 
 ARG APP_VERSION=0
 RUN ARCH="$(dpkg --print-architecture)"; \
@@ -60,14 +60,14 @@ RUN ls -latr /usr/local/depbo-tools
 #RUN tar -zxv $BINARY_URL -C /usr/local/pbotools
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
-#FROM ubuntu:bionic
-#COPY --from=build /usr/local/pbotools /usr/local/pbotools
+FROM ubuntu:focal
+COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 
 ###### Start #######################################################################
 LABEL description="..."
 LABEL maintainer="<hopper.jerry@gmail.com>"
-ENV PATH=$PATH:/usr/local/pbotools/bin
-ENV LD_LIBRARY_PATH=/usr/local/pbotools/lib
+ENV PATH=$PATH:/usr/local/depbo-tools/bin
+ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
