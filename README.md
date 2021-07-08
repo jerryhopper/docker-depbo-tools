@@ -4,8 +4,7 @@ DePbo tools for Linux consists of a shared library and a set of command line too
  
 This is the source repository for https://hub.docker.com/r/jerryhopper/depbo-tools/
 
-## Update
-i added armake to the image. More info: https://github.com/KoffeinFlummi/armake
+
 
 Usage:  
 
@@ -13,7 +12,10 @@ Assuming there is a file called bogus.pbo in the current directory:
 
 <pre>
 docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest extractpbo bogus.pbo
+</pre>
 
+Available commands:
+<pre>
 convertwrp
 deanm
 defxy
@@ -34,10 +36,11 @@ rapify
 </pre>
 
 
-Available commands:
 
 
 
+## Update
+i added armake to the image. More info: https://github.com/KoffeinFlummi/armake
 
 <pre>
 docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest armake
