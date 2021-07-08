@@ -1,5 +1,5 @@
 name: ci
-on: [pushx]
+on: [push]
 jobs:
   multi:
     runs-on: ubuntu-latest
