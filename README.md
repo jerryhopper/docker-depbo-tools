@@ -11,15 +11,51 @@ Usage:
 
 Assuming there is a file called bogus.pbo in the current directory:
 
-<pre>docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest extractpbo bogus.pbo</pre>
+<pre>
+docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest extractpbo bogus.pbo
+
+convertwrp
+deanm
+defxy
+dekey
+dep3d
+depax
+depew
+derap
+dertm
+dewss
+extractpbo
+makepbo
+movefolder
+moveobject
+pbodeps
+queryaddons
+rapify
+</pre>
 
 
 Available commands:
 
-convertwrp, deanm, defxy, dekey, dep3d, depax, depew, derap, dertm, dewss, extractpbo, makepbo, movefolder, moveobject, pbodeps, queryaddons, rapify, armake
 
 
-<pre>docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest armake</pre>
+
+<pre>
+docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest armake
+
+Usage:
+    armake binarize [-f] [-w <wname>] [-i <includefolder>] <source> [<target>]
+    armake build [-f] [-p] [-w <wname>] [-i <includefolder>] [-x <xlist>] [-k <privatekey>] [-s <signature>] [-e <headerextension>] <folder> <pbo>
+    armake inspect <pbo>
+    armake unpack [-f] [-i <includepattern>] [-x <excludepattern>] <pbo> <folder>
+    armake cat <pbo> <name>
+    armake derapify [-f] [-d <indentation>] [<source> [<target>]]
+    armake keygen [-f] <keyname>
+    armake sign [-f] [-s <signature>] <privatekey> <pbo>
+    armake paa2img [-f] <source> <target>
+    armake img2paa [-f] [-z] [-t <paatype>] <source> <target>
+    armake (-h | --help)
+    armake (-v | --version)
+</pre>
 
 
 More info about the commandline tools. : https://mikero.bytex.digital/
