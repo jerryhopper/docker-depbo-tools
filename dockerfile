@@ -5,6 +5,9 @@ FROM ubuntu:focal as build
 
 
 ARG APP_VERSION=0
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Amsterdam
+
 RUN ARCH="$(dpkg --print-architecture)"; \
     
     case "${ARCH}" in\
