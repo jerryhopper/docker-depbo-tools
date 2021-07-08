@@ -34,9 +34,12 @@ RUN ARCH="$(dpkg --print-architecture)"; \
 
 RUN cd /tmp && git clone https://github.com/KoffeinFlummi/armake.git
 ARG REVISION=master
-RUN cd /tmp/armake && git checkout $REVISION \
-    \
-    && unexpand -t 4 --first-only /tmp/armake/Makefile | tee /tmp/armake/Makefile
+
+#RUN cd /tmp/armake && git checkout $REVISION \
+#    \
+#    && unexpand -t 4 --first-only /tmp/armake/Makefile | tee /tmp/armake/Makefile
+
+RUN cd /tmp/armake && git checkout $REVISION 
 
 
 RUN ls -latr /tmp
