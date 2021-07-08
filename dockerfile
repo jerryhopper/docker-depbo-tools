@@ -65,8 +65,9 @@ LABEL maintainer="<hopper.jerry@gmail.com>"
 ENV PATH=$PATH:/usr/local/depbo-tools/bin
 ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
-RUN apt update && apt install -y curl && apt-get install -y git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0  
-RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y curl && apt-get install -y git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
+
+#RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
 
 
 
