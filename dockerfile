@@ -30,7 +30,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     && cp -r /tmp/depbo-tools /usr/local/depbo-tools \
     && ls -latr /usr/local/depbo-tools 
     
-#software-properties-common bison flex git make
+RUN apt install -y openssl ca-certificates
 
 RUN cd /tmp && git clone https://github.com/KoffeinFlummi/armake.git
 ARG REVISION=master
