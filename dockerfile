@@ -23,7 +23,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && apt install -y curl software-properties-common bison flex git make liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
+    && apt install -y curl software-properties-common bison flex git make liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 openssl ca-certificates gcc libssl-dev \
     && curl -LfsSo /tmp/depbo-tools.tgz ${BINARY_URL} \
     && cd /tmp \
     && tar -zxvf depbo-tools.tgz  \
