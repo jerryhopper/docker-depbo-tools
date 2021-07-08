@@ -38,6 +38,10 @@ RUN cd /tmp/armake && git checkout $REVISION \
     \
     && unexpand -t 4 --first-only /tmp/armake/Makefile | tee /tmp/armake/Makefile
 
+
+
+RUN ls -latr /tmp/armake 
+
 RUN cd /tmp/armake && make install \
     && chmod +x /tmp/armake/bin/armake
     
