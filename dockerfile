@@ -1,7 +1,8 @@
 #
 #
 
-FROM ubuntu:focal as build
+#FROM ubuntu:focal as build
+FROM debian:buster-slim as build
 
 
 ARG APP_VERSION=0
@@ -12,7 +13,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     
     case "${ARCH}" in\
     aarch64|arm64)\
-        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/linux-arm64-focal.tgz';\
+        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/linux-arm64-debian.tgz';\
         ;;\
     amd64|x86_64)\
         BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/linux-amd64.tgz';\
@@ -50,7 +51,9 @@ RUN cd /tmp/armake && make install \
     
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
-FROM ubuntu:focal
+#FROM ubuntu:focal
+FROM debian:buster-slim
+
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
 
