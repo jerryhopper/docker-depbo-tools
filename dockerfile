@@ -82,7 +82,7 @@ RUN apt install -y libssl3
 
 #################
 RUN curl -LfsSo /tmp/openssl-1.1.1w.tar.gz https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz
-RUN cd /tmp && tar -zxcv openssl-1.1.1w.tar.gz
+RUN cd /tmp && tar -zxvf openssl-1.1.1w.tar.gz
 RUN cd /tmp/openssl-1.1.1w && ./config 
 RUN make
 
@@ -101,6 +101,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
