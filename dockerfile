@@ -12,6 +12,8 @@ ARG APP_VERSION=0
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Amsterdam
 
+RUN dpkg --print-architecture
+
 RUN ARCH="$(dpkg --print-architecture)"; \
     
     case "${ARCH}" in\
@@ -85,6 +87,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
