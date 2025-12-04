@@ -75,6 +75,7 @@ ENV PATH=$PATH:/usr/local/depbo-tools/bin
 ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 RUN apt update && apt install -y curl && apt-get install -y software-properties-common git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
+RUN apt install -y openssl ca-certificates libssl-dev
 
 
 
@@ -90,6 +91,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
