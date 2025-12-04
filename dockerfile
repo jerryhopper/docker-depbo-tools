@@ -25,7 +25,8 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     *)\
         echo "Unsupported arch: ${ARCH}";\
-        exit 1;\
+        #exit 1;\
+        BINARY_URL='https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/linux-amd64.tgz';\
         ;;\
     esac \
     && apt update \
@@ -87,6 +88,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
