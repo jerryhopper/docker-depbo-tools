@@ -66,7 +66,7 @@ FROM debian:bookworm-slim
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
 
-RUN lsn -s /usr/lib/x86_64-linux-gnu/libssl.so.3 /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.3 /usr/lib/x86_64-linux-gnu/libssl.so.1.1
 
 ###### Start #######################################################################
 LABEL description="..."
@@ -93,6 +93,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
