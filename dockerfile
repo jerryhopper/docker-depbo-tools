@@ -3,8 +3,8 @@
 
 #FROM ubuntu:focal as build
 #FROM debian:buster-slim as build
-#FROM debian:bookworm-slim as build
-FROM debian:trixie-slim AS build
+FROM debian:bookworm-slim as build
+#FROM debian:trixie-slim AS build  - trixie misses software-properties-common!!
 
 
 
@@ -55,7 +55,7 @@ RUN apt install -y openssl ca-certificates libssl-dev
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
 #FROM ubuntu:focal
-FROM debian:trixie-slim
+FROM debian:bookworm-slim
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 #COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
@@ -86,6 +86,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
