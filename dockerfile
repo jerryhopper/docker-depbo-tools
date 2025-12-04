@@ -2,9 +2,9 @@
 #
 
 #FROM ubuntu:focal as build
-FROM debian:buster-slim as build
-#FROM debian:bookworm-slim as build
-#FROM debian:bullseye-slim as build
+FROM debian:buster-slim AS build
+#FROM debian:bookworm-slim AS build
+#FROM debian:bullseye-slim AS build
 
 #FROM debian:trixie-slim AS build  - trixie misses software-properties-common!!
 
@@ -58,8 +58,10 @@ RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
 #FROM ubuntu:focal
-FROM debian:buster-slim 
-RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+#FROM debian:buster-slim
+#RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+
+FROM debian:bookworm-slim
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
