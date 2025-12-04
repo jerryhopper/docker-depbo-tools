@@ -4,7 +4,7 @@
 #FROM ubuntu:focal as build
 #FROM debian:buster-slim as build
 #FROM debian:bookworm-slim as build
-FROM debian:trixie-slim as build
+FROM debian:trixie-slim AS build
 
 
 
@@ -69,9 +69,9 @@ ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 RUN apt update && apt install -y curl && apt-get install -y git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
 
-RUN add-apt-repository ppa:koffeinflummi/armake
-RUN apt-get update
-RUN apt-get install armake
+#RUN add-apt-repository ppa:koffeinflummi/armake
+#RUN apt-get update
+#RUN apt-get install armake
 
 #RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
 
@@ -80,10 +80,11 @@ RUN apt-get install armake
 RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/bogus.pbo \ 
      && extractpbo /tmp/bogus.pbo
 
-RUN armake --help
+#RUN armake --help
 
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
