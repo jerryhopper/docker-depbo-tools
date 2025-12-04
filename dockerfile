@@ -82,11 +82,12 @@ RUN apt update && apt install -y curl && apt-get install -y software-properties-
 RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/bogus.pbo \ 
      && extractpbo /tmp/bogus.pbo
 
-RUN armake --help
+#RUN armake --help
 
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
