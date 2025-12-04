@@ -39,8 +39,8 @@ RUN ARCH="$(dpkg --print-architecture)"; \
     
 RUN apt install -y openssl ca-certificates libssl-dev
 
-#RUN cd /tmp && git clone https://github.com/KoffeinFlummi/armake.git
-RUN cd /tmp && git clone https://github.com/Soldia1138/armake.git
+RUN cd /tmp && git clone https://github.com/KoffeinFlummi/armake.git
+#RUN cd /tmp && git clone https://github.com/Soldia1138/armake.git
 ARG REVISION=master
 
 #RUN cd /tmp/armake && git checkout $REVISION \
@@ -53,7 +53,7 @@ RUN cd /tmp/armake && git checkout $REVISION
 RUN ls -latr /tmp
 RUN ls -latr /tmp/armake 
 
-#RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
+RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
     
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
@@ -62,7 +62,7 @@ FROM debian:buster-slim
 RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
-#COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
+COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
 
 
 
@@ -83,11 +83,12 @@ RUN apt update && apt install -y curl && apt-get install -y software-properties-
 RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools/raw/master/external/bogus.pbo \ 
      && extractpbo /tmp/bogus.pbo
 
-#RUN armake --help
+RUN armake --help
 
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
