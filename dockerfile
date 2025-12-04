@@ -3,7 +3,9 @@
 
 #FROM ubuntu:focal as build
 #FROM debian:buster-slim as build
-FROM debian:bookworm-slim as build
+#FROM debian:bookworm-slim as build
+FROM debian:bullseye-slim as build
+
 #FROM debian:trixie-slim AS build  - trixie misses software-properties-common!!
 
 
@@ -85,6 +87,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
