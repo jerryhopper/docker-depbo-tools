@@ -3,7 +3,9 @@
 
 #FROM ubuntu:focal as build
 #FROM debian:buster-slim as build
-FROM debian:bookworm-slim as build
+#FROM debian:bookworm-slim as build
+FROM debian:trixie-slim as build
+
 
 
 ARG APP_VERSION=0
@@ -47,16 +49,15 @@ RUN cd /tmp/armake && git checkout $REVISION
 RUN ls -latr /tmp
 RUN ls -latr /tmp/armake 
 
-RUN cd /tmp/armake && make install \
-    && chmod +x /tmp/armake/bin/armake
+#RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
     
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
 #FROM ubuntu:focal
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
-COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
+#COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
 
 
 
@@ -67,6 +68,10 @@ ENV PATH=$PATH:/usr/local/depbo-tools/bin
 ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 RUN apt update && apt install -y curl && apt-get install -y git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
+
+RUN add-apt-repository ppa:koffeinflummi/armake
+RUN apt-get update
+RUN apt-get install armake
 
 #RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
 
@@ -80,4 +85,5 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
