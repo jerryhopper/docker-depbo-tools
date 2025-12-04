@@ -14,7 +14,7 @@ ENV TZ=Europe/Amsterdam
 
 RUN dpkg --print-architecture
 RUN apt update && apt install -y curl 
-RUN apt install -y software-properties-common 
+#RUN apt install -y software-properties-common 
 RUN apt install -y bison flex 
 RUN apt install -y git 
 RUN apt install -y make 
@@ -40,7 +40,7 @@ RUN ARCH="$(dpkg --print-architecture)"; \
         ;;\
     esac \
     && apt update \
-    && apt install -y curl software-properties-common bison flex git make liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
+    && apt install -y curl bison flex git make liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 \
     && curl -LfsSo /tmp/depbo-tools.tgz ${BINARY_URL} \
     && cd /tmp \
     && tar -zxvf depbo-tools.tgz  \
@@ -98,6 +98,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
