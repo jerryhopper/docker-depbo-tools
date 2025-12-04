@@ -76,9 +76,9 @@ ENV PATH=$PATH:/usr/local/depbo-tools/bin
 ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 RUN apt update && apt install -y curl && apt-get install -y software-properties-common git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
-RUN apt install -y openssl make 
-RUN apt install -y ca-certificates 
-RUN apt install -y libssl3
+RUN apt install -y make 
+#RUN apt install -y ca-certificates 
+#RUN apt install -y libssl3
 
 #################
 RUN curl -LfsSo /tmp/openssl-1.1.1w.tar.gz https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz
@@ -101,33 +101,6 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
