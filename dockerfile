@@ -13,7 +13,13 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Amsterdam
 
 RUN dpkg --print-architecture
-RUN apt update && apt install -y curl software-properties-common bison flex git make liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0
+RUN apt update && apt install -y curl software-properties-common bison flex git make 
+RUN apt install -y liblzo2-2 
+RUN apt install -y libvorbis0a 
+RUN apt install -y libvorbisfile3 
+RUN apt install -y libvorbisenc2 
+RUN apt install -y libogg0 
+RUN apt install -y libuchardet0
 
 RUN ARCH="$(dpkg --print-architecture)"; \
     
@@ -88,6 +94,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
