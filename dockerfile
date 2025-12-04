@@ -67,12 +67,7 @@ COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
 
 
-RUN curl -LfsSo /tmp/openssl-1.1.1w.tar.gz https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz
-RUN cd /tmp && tar -zxcv openssl-1.1.1w.tar.gz
-RUN cd /tmp/openssl-1.1.1w && ./config 
-RUN make
 
-#RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.3 /usr/lib/x86_64-linux-gnu/libssl.so.1.1
 
 ###### Start #######################################################################
 LABEL description="..."
@@ -85,7 +80,14 @@ RUN apt install -y openssl
 RUN apt install -y ca-certificates 
 RUN apt install -y libssl3
 
+#################
+RUN curl -LfsSo /tmp/openssl-1.1.1w.tar.gz https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz
+RUN cd /tmp && tar -zxcv openssl-1.1.1w.tar.gz
+RUN cd /tmp/openssl-1.1.1w && ./config 
+RUN make
 
+#RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.3 /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+#################
 
 #RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
 
@@ -99,6 +101,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
