@@ -50,7 +50,7 @@ RUN cd /tmp/armake && git checkout $REVISION
 RUN ls -latr /tmp
 RUN ls -latr /tmp/armake 
 
-#RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
+RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
     
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
@@ -70,9 +70,9 @@ ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 RUN apt update && apt install -y curl && apt-get install -y git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
 
-RUN add-apt-repository ppa:koffeinflummi/armake
-RUN apt-get update
-RUN apt-get install armake
+#RUN add-apt-repository ppa:koffeinflummi/armake
+#RUN apt-get update
+#RUN apt-get install armake
 
 #RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
 
@@ -86,6 +86,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
