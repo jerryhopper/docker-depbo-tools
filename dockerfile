@@ -2,7 +2,8 @@
 #
 
 #FROM ubuntu:focal as build
-FROM debian:buster-slim as build
+#FROM debian:buster-slim as build
+FROM debian:bookworm-slim as build
 
 
 ARG APP_VERSION=0
@@ -52,7 +53,7 @@ RUN cd /tmp/armake && make install \
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
 #FROM ubuntu:focal
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
@@ -79,3 +80,4 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
