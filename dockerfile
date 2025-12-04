@@ -8,7 +8,7 @@ FROM debian:buster-slim as build
 
 #FROM debian:trixie-slim AS build  - trixie misses software-properties-common!!
 
-sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
 
 ARG APP_VERSION=0
 ARG DEBIAN_FRONTEND=noninteractive
@@ -59,7 +59,7 @@ RUN ls -latr /tmp/armake
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
 #FROM ubuntu:focal
 FROM debian:buster-slim 
-sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
 #COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
@@ -88,6 +88,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
