@@ -87,8 +87,12 @@ RUN cd /tmp/openssl-1.1.1w && ./config
 RUN cd /tmp/openssl-1.1.1w && make
 RUN cd /tmp/openssl-1.1.1w && make install
 
+RUN rm -rf /tmp/openssl-1.1.1w
+RUN rm -f /tmp/openssl-1.1.1w.tar.gz
+
 RUN apt update && apt install -y mlocate
 
+RUN rm -rf /var/lib/apt/lists/*
 
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.3 /usr/lib/x86_64-linux-gnu/libssl.so.1.1
 #################
@@ -105,6 +109,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
