@@ -4,7 +4,7 @@ jobs:
   multi:
     runs-on: ubuntu-latest
     env:
-        APP_VERSION: 0.8.10
+        APP_VERSION: ${{ github.ref_name }}
     steps:
       - 
         name: identify
