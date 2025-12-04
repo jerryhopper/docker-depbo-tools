@@ -12,18 +12,6 @@ ARG APP_VERSION=0
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Amsterdam
 
-RUN dpkg --print-architecture
-RUN apt update && apt install -y curl 
-#RUN apt install -y software-properties-common 
-RUN apt install -y bison flex 
-RUN apt install -y git 
-RUN apt install -y make 
-RUN apt install -y liblzo2-2 
-RUN apt install -y libvorbis0a 
-RUN apt install -y libvorbisfile3 
-RUN apt install -y libvorbisenc2 
-RUN apt install -y libogg0 
-RUN apt install -y libuchardet0
 
 RUN ARCH="$(dpkg --print-architecture)"; \
     
@@ -82,9 +70,9 @@ ENV LD_LIBRARY_PATH=/usr/local/depbo-tools/lib
 
 RUN apt update && apt install -y curl && apt-get install -y git liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 && rm -rf /var/lib/apt/lists/*
 
-#RUN add-apt-repository ppa:koffeinflummi/armake
-#RUN apt-get update
-#RUN apt-get install armake
+RUN add-apt-repository ppa:koffeinflummi/armake
+RUN apt-get update
+RUN apt-get install armake
 
 #RUN apt install -y python-pip python-dev && rm -rf /var/lib/apt/lists/*
 
@@ -98,6 +86,7 @@ RUN curl -LfsSo /tmp/bogus.pbo https://github.com/jerryhopper/docker-depbo-tools
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
