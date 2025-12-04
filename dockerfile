@@ -53,7 +53,7 @@ RUN cd /tmp/armake && git checkout $REVISION
 RUN ls -latr /tmp
 RUN ls -latr /tmp/armake 
 
-RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
+#RUN cd /tmp/armake && make install && chmod +x /tmp/armake/bin/armake
     
 
 ###### Use Ubuntu latest and only copy in what we need to reduce the layer size ###################
@@ -87,6 +87,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
