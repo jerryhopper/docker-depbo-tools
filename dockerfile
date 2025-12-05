@@ -2,13 +2,13 @@
 #
 
 #FROM ubuntu:focal as build
-#FROM debian:buster-slim AS build
+FROM debian:buster-slim AS build
 #FROM debian:bookworm-slim AS build
 #FROM debian:bullseye-slim AS build
 
-FROM debian:trixie-slim AS build
+#FROM debian:trixie-slim AS build
 
-#RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
 
 ARG APP_VERSION=0
 ARG DEBIAN_FRONTEND=noninteractive
@@ -110,6 +110,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
