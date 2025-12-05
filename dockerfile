@@ -65,7 +65,7 @@ FROM debian:bookworm-slim
 FROM debian:trixie-slim
 
 COPY --from=build /usr/local/depbo-tools /usr/local/depbo-tools
-#COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
+COPY --from=build /tmp/armake/bin/armake /usr/local/bin/armake
 
 
 
@@ -110,6 +110,7 @@ RUN armake --help
 WORKDIR /home
 
 #CMD ["/usr/local/fusionauth/fusionauth-app/apache-tomcat/bin/catalina.sh", "run"]
+
 
 
 
